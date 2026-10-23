@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kingdom Bible Distribution Ltd</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="1.jpeg">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #b0e0e6 0%, #dbeafe 50%, #cbd5e1 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* 3-Color Slow Infinite Blinking Animation for Hero Title */
+        @keyframes blinkThreeColors {
+            0%, 100% {
+                color: #dc2626; /* Crimson Red */
+                text-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+            }
+            33% {
+                color: #1e3a8a; /* Deep Blue */
+                text-shadow: 0 0 20px rgba(30, 58, 138, 0.3);
+            }
+            66% {
+                color: #047857; /* Emerald Green */
+                text-shadow: 0 0 20px rgba(4, 120, 87, 0.3);
+            }
+        }
+
+        .hero-title {
+            text-align: center;
+            animation: blinkThreeColors 6s ease-in-out infinite;
+        }
+
+        /* Glassmorphism & polished card styling */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+        }
+
+        .glass-card-dark {
+            background: rgba(30, 41, 59, 0.92);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-footer-bg {
+            background-color: #0f172a; /* Deep Slate Blue */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between text-slate-800 relative">
+
+    <!-- 1. HEADER SECTION -->
+    <header class="header-footer-bg text-white sticky top-0 z-40 shadow-xl border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo / Title -->
+                <div class="flex items-center space-x-3 cursor-pointer group" onclick="scrollToSection('hero')">
+                    <img src="5.jpeg" alt="Kingdom Bible Logo" class="h-10 w-10 sm:h-12 sm:w-12 object-contain rounded-xl shadow-md group-hover:scale-105 transition-transform" onerror="this.src='https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=100&q=80'" />
+                    <div>
+                        <span class="text-xl sm:text-2xl font-black tracking-wider block leading-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+                            Kingdom Bible
+                        </span>
+                        <span class="text-[10px] sm:text-xs font-semibold text-red-400 tracking-widest uppercase block">Distribution Ltd</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-3">
+                    <a href="#hero" class="px-3 py-2 rounded-lg text-sm font-semibold hover:bg-slate-800 hover:text-red-400 transition-colors">Home</a>
+                    <a href="#catalog" class="px-3 py-2 rounded-lg text-sm font-semibold hover:bg-slate-800 hover:text-red-400 transition-colors">Catalog</a>
+                    <a href="#profiles" class="px-3 py-2 rounded-lg text-sm font-semibold hover:bg-slate-800 hover:text-red-400 transition-colors">Team</a>
+                    <a href="#faq" class="px-3 py-2 rounded-lg text-sm font-semibold hover:bg-slate-800 hover:text-red-400 transition-colors">FAQ</a>
+                    <a href="#about" class="px-3 py-2 rounded-lg text-sm font-semibold hover:bg-slate-800 hover:text-red-400 transition-colors">About Us</a>
+                    <a href="#contact" class="px-4 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white transition-all shadow-md hover:shadow-red-900/30">Contact Us</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2.5 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 focus:outline-none transition-colors">
+                        <i class="fa-solid fa-bars-staggered text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 backdrop-blur-md border-t border-slate-800 px-4 pt-3 pb-5 space-y-2">
+            <a href="#hero" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-base font-semibold hover:bg-slate-800 text-slate-200">Home</a>
+            <a href="#catalog" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-base font-semibold hover:bg-slate-800 text-slate-200">Scripture Catalog</a>
+            <a href="#profiles" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-base font-semibold hover:bg-slate-800 text-slate-200">Team Leadership</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-base font-semibold hover:bg-slate-800 text-slate-200">FAQs</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-base font-semibold hover:bg-slate-800 text-slate-200">About Us</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block px-4 py-3 rounded-xl text-base font-bold bg-red-600 text-white text-center shadow-md">Contact Us</a>
+        </div>
+    </header>
+
+    <!-- 2. BODY / MAIN CONTENT SECTION -->
+    <main class="flex-grow">
+        
+        <!-- Hero Banner Section -->
+        <section id="hero" class="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 text-center my-2 sm:my-4">
+            <div class="max-w-5xl mx-auto glass-card p-6 sm:p-14 rounded-3xl shadow-2xl relative overflow-hidden">
+                
+                <!-- Decorative Subtle Background Glows -->
+                <div class="absolute -top-12 -left-12 w-40 h-40 bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-12 -right-12 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <span class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-red-50 text-red-600 text-xs sm:text-sm font-bold uppercase tracking-wider mb-6 border border-red-100 shadow-sm">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <span>Global Scripture Logistics</span>
+                </span>
+
+                <!-- 3-Color Slowly Blinking H1 Header -->
+                <h1 class="hero-title text-4xl sm:text-7xl font-black tracking-tight uppercase mb-6 drop-shadow-sm">
+                    WELCOME BACK
+                </h1>
+                <p class="text-slate-700 text-base sm:text-2xl max-w-3xl mx-auto font-medium mb-10 leading-relaxed">
+                    Connecting churches, ministries, and individuals worldwide with premium Bible editions, study tools, and multi-language scriptures.
+                </p>
+
+                <!-- Call to Action Buttons -->
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-md mx-auto">
+                    <a href="#catalog" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-extrabold rounded-2xl shadow-lg hover:shadow-red-500/30 transform hover:-translate-y-0.5 transition-all text-center flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Browse Catalog</span>
+                    </a>
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-slate-50 text-slate-800 font-extrabold rounded-2xl shadow-md hover:shadow-lg border border-slate-200 transition-all text-center flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-file-signature text-slate-500"></i>
+                        <span>Request Bulk Quote</span>
+                    </a>
+                </div>
+
+                <!-- Hero Key Metric Badges -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-8 border-t border-slate-200/80">
+                    <div class="p-3 rounded-2xl bg-white/60 border border-slate-200/60 shadow-sm">
+                        <p class="text-2xl sm:text-3xl font-black text-slate-900">40+</p>
+                        <p class="text-xs font-semibold text-slate-600">Countries Served</p>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-white/60 border border-slate-200/60 shadow-sm">
+                        <p class="text-2xl sm:text-3xl font-black text-slate-900">50k+</p>
+                        <p class="text-xs font-semibold text-slate-600">Bibles Distributed</p>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-white/60 border border-slate-200/60 shadow-sm">
+                        <p class="text-2xl sm:text-3xl font-black text-slate-900">100%</p>
+                        <p class="text-xs font-semibold text-slate-600">Quality Assured</p>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-white/60 border border-slate-200/60 shadow-sm">
+                        <p class="text-2xl sm:text-3xl font-black text-slate-900">24/7</p>
+                        <p class="text-xs font-semibold text-slate-600">Ministry Support</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Feature / Core Pillars Section -->
+        <section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">Our Core Pillars</h2>
+                <p class="text-slate-600 mt-2 font-medium text-base sm:text-lg">Dedicated to reliable, high-impact Bible distribution globally</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                
+                <div class="glass-card rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1.5 border border-white">
+                    <div class="w-16 h-16 bg-red-100/80 text-red-600 rounded-2xl flex items-center justify-center text-3xl font-bold mb-6 shadow-inner">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">Wide Selection</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Explore our vast collection including Study Bibles, Audio Bibles, Devotionals, Children's Bibles, and Journaling editions.
+                    </p>
+                </div>
+
+                <div class="glass-card rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1.5 border border-white">
+                    <div class="w-16 h-16 bg-blue-100/80 text-blue-600 rounded-2xl flex items-center justify-center text-3xl font-bold mb-6 shadow-inner">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">Global Distribution</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Efficient international shipping and logistics designed specifically for ministries, churches, and Christian schools worldwide.
+                    </p>
+                </div>
+
+                <div class="glass-card rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1.5 border border-white">
+                    <div class="w-16 h-16 bg-emerald-100/80 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl font-bold mb-6 shadow-inner">
+                        <i class="fa-solid fa-hands-holding-child"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">Community Impact</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        Strong partnerships with local churches and missionary outreach programs to make God's word accessible to everyone.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Interactive Search & Filter Catalog Section -->
+        <section id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+            <div class="glass-card rounded-3xl p-6 sm:p-12 shadow-xl">
+                
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">Explore Scripture Translations</h2>
+                    <p class="text-slate-600 mt-2 text-base sm:text-lg">Filter, search, and generate additional scriptures from our global inventory</p>
+                </div>
+
+                <!-- Search Input & Translation Filters -->
+                <div class="space-y-6">
+                    <!-- Search Input Box -->
+                    <div class="relative max-w-xl mx-auto">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg"></i>
+                        <input type="text" id="searchInput" placeholder="Search by Bible title, category, verse, or translation..." 
+                            class="w-full pl-12 pr-4 py-4 bg-white rounded-2xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent text-slate-800 placeholder-slate-400 transition-all shadow-sm text-sm sm:text-base">
+                    </div>
+
+                    <!-- Translation Quick Filter Buttons -->
+                    <div class="flex flex-wrap justify-center gap-2 sm:gap-3" id="translationFilters">
+                        <button onclick="filterTranslation('ALL')" class="filter-btn active-filter px-4 py-2 text-xs sm:text-sm font-bold rounded-xl bg-red-600 text-white shadow-md transition-all">All Editions</button>
+                        <button onclick="filterTranslation('KJV')" class="filter-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-xl bg-white text-slate-700 hover:bg-slate-100 shadow-sm transition-all">KJV</button>
+                        <button onclick="filterTranslation('NIV')" class="filter-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-xl bg-white text-slate-700 hover:bg-slate-100 shadow-sm transition-all">NIV</button>
+                        <button onclick="filterTranslation('ESV')" class="filter-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-xl bg-white text-slate-700 hover:bg-slate-100 shadow-sm transition-all">ESV</button>
+                        <button onclick="filterTranslation('NKJV')" class="filter-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-xl bg-white text-slate-700 hover:bg-slate-100 shadow-sm transition-all">NKJV</button>
+                        <button onclick="filterTranslation('NLT')" class="filter-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-xl bg-white text-slate-700 hover:bg-slate-100 shadow-sm transition-all">NLT</button>
+                    </div>
+                </div>
+
+                <!-- Dynamic Grid Items -->
+                <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-10">
+                    <!-- Cards populated dynamically -->
+                </div>
+
+                <!-- Regenerate / Add More Scriptures Action Button -->
+                <div class="mt-12 text-center">
+                    <button onclick="regenerateMoreScriptures()" class="w-full sm:w-auto px-8 py-4 bg-slate-900 hover:bg-red-600 text-white font-extrabold rounded-2xl shadow-xl hover:shadow-red-900/20 transition-all inline-flex items-center justify-center space-x-3 text-sm sm:text-base group">
+                        <i class="fa-solid fa-arrows-rotate group-hover:rotate-180 transition-transform duration-500"></i>
+                        <span>Regenerate & Load More Scriptures</span>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TEAM PROFILES SECTION (Profile Name & Role) -->
+        <section id="profiles" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+            <div class="glass-card rounded-3xl p-6 sm:p-12 shadow-xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">Leadership & Representatives</h2>
+                    <p class="text-slate-600 mt-2 text-base sm:text-lg">Our dedicated team committed to advancing scripture distribution</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Profile 1 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Sarah Jenkins" class="w-28 h-28 rounded-full mx-auto object-cover mb-4 ring-4 ring-red-100 shadow-md">
+                        <h3 class="font-bold text-slate-900 text-xl">Sarah Jenkins</h3>
+                        <p class="text-xs font-extrabold text-red-600 uppercase tracking-wider mb-3">Director of Global Logistics</p>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-4">Oversees international distribution routes, customs clearances, and major global ministry partners.</p>
+                        <button onclick="requestQuote('Inquiry to Sarah Jenkins')" class="w-full py-2 bg-slate-100 hover:bg-red-600 hover:text-white text-slate-800 rounded-xl font-bold text-xs transition-colors">
+                            Contact Sarah
+                        </button>
+                    </div>
+
+                    <!-- Profile 2 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="David Miller" class="w-28 h-28 rounded-full mx-auto object-cover mb-4 ring-4 ring-red-100 shadow-md">
+                        <h3 class="font-bold text-slate-900 text-xl">David Miller</h3>
+                        <p class="text-xs font-extrabold text-red-600 uppercase tracking-wider mb-3">Head of Church Relations</p>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-4">Dedicated partner manager for local churches, Sunday schools, and group study orders.</p>
+                        <button onclick="requestQuote('Inquiry to David Miller')" class="w-full py-2 bg-slate-100 hover:bg-red-600 hover:text-white text-slate-800 rounded-xl font-bold text-xs transition-colors">
+                            Contact David
+                        </button>
+                    </div>
+
+                    <!-- Profile 3 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" alt="Grace Williams" class="w-28 h-28 rounded-full mx-auto object-cover mb-4 ring-4 ring-red-100 shadow-md">
+                        <h3 class="font-bold text-slate-900 text-xl">Grace Williams</h3>
+                        <p class="text-xs font-extrabold text-red-600 uppercase tracking-wider mb-3">Translation Lead</p>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-4">Specialist in foreign language scriptures, bi-lingual parallel editions, and rare prints.</p>
+                        <button onclick="requestQuote('Inquiry to Grace Williams')" class="w-full py-2 bg-slate-100 hover:bg-red-600 hover:text-white text-slate-800 rounded-xl font-bold text-xs transition-colors">
+                            Contact Grace
+                        </button>
+                    </div>
+
+                    <!-- Profile 4 -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 text-center shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="Michael Chang" class="w-28 h-28 rounded-full mx-auto object-cover mb-4 ring-4 ring-red-100 shadow-md">
+                        <h3 class="font-bold text-slate-900 text-xl">Michael Chang</h3>
+                        <p class="text-xs font-extrabold text-red-600 uppercase tracking-wider mb-3">Support & Fulfillment Lead</p>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-4">Manages real-time order tracking, package clearance, and priority customer service.</p>
+                        <button onclick="requestQuote('Inquiry to Michael Chang')" class="w-full py-2 bg-slate-100 hover:bg-red-600 hover:text-white text-slate-800 rounded-xl font-bold text-xs transition-colors">
+                            Contact Michael
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FREQUENTLY ASKED QUESTIONS (FAQ) SECTION -->
+        <section id="faq" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+            <div class="glass-card rounded-3xl p-6 sm:p-12 shadow-xl max-w-4xl mx-auto">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">Frequently Asked Questions</h2>
+                    <p class="text-slate-600 mt-2 text-base sm:text-lg">Find quick answers to common questions regarding distribution and orders</p>
+                </div>
+
+                <div class="space-y-4" id="faqAccordion">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                        <button onclick="toggleFaq(1)" class="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none bg-slate-50/80 hover:bg-slate-100 transition-colors">
+                            <span class="font-bold text-slate-900 text-sm sm:text-base">How do bulk orders work for churches and ministries?</span>
+                            <i id="faq-icon-1" class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-200"></i>
+                        </button>
+                        <div id="faq-answer-1" class="hidden px-6 py-5 text-slate-600 text-xs sm:text-sm border-t border-slate-200 leading-relaxed bg-white">
+                            We offer special wholesale discounts for bulk orders placed by churches, missionary programs, and schools. Simply click "Request Quote" or send us an inquiry directly through our contact form.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                        <button onclick="toggleFaq(2)" class="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none bg-slate-50/80 hover:bg-slate-100 transition-colors">
+                            <span class="font-bold text-slate-900 text-sm sm:text-base">Which international countries do you ship to?</span>
+                            <i id="faq-icon-2" class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-200"></i>
+                        </button>
+                        <div id="faq-answer-2" class="hidden px-6 py-5 text-slate-600 text-xs sm:text-sm border-t border-slate-200 leading-relaxed bg-white">
+                            We ship globally across 40+ countries. Our shipping logistics handle customs clearance and expedited freight to ensure timely delivery directly to your ministry location.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                        <button onclick="toggleFaq(3)" class="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none bg-slate-50/80 hover:bg-slate-100 transition-colors">
+                            <span class="font-bold text-slate-900 text-sm sm:text-base">Are custom leather covers and imprinting available?</span>
+                            <i id="faq-icon-3" class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-200"></i>
+                        </button>
+                        <div id="faq-answer-3" class="hidden px-6 py-5 text-slate-600 text-xs sm:text-sm border-t border-slate-200 leading-relaxed bg-white">
+                            Yes! We provide custom name engraving, church logo imprinting, and custom leather binding options for commemorative editions and special events.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                        <button onclick="toggleFaq(4)" class="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none bg-slate-50/80 hover:bg-slate-100 transition-colors">
+                            <span class="font-bold text-slate-900 text-sm sm:text-base">Can I request specific translations not listed in the catalog?</span>
+                            <i id="faq-icon-4" class="fa-solid fa-chevron-down text-slate-500 transition-transform duration-200"></i>
+                        </button>
+                        <div id="faq-answer-4" class="hidden px-6 py-5 text-slate-600 text-xs sm:text-sm border-t border-slate-200 leading-relaxed bg-white">
+                            Aboolutely. We source a broad range of foreign translations and rare scripture prints. Click the "Regenerate & Load More" button or message our team for custom inquiries.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 mb-12">
+            <div class="glass-card rounded-3xl p-6 sm:p-12 shadow-xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h2 class="text-3xl font-black text-slate-900 mb-4 tracking-tight">About Kingdom Bible Distribution Ltd</h2>
+                        <p class="text-slate-700 leading-relaxed mb-4 text-sm sm:text-base">
+                            Founded with a mission to spread scripture globally, Kingdom Bible Distribution Ltd serves as a trusted logistics and supply chain partner for ministries, bookstores, and churches worldwide.
+                        </p>
+                        <p class="text-slate-700 leading-relaxed text-sm sm:text-base">
+                            We take pride in providing high-quality leather, hardbound, softcover, and digital formats suited for personal devotions, group studies, or large-scale missionary initiatives.
+                        </p>
+                    </div>
+                    <div class="bg-slate-900 text-white p-8 rounded-2xl shadow-inner space-y-5 border border-slate-800">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-red-600/20 flex items-center justify-center text-red-400 text-xl font-bold">
+                                <i class="fa-solid fa-truck-fast"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-base">Rapid Bulk Shipping</h4>
+                                <p class="text-xs text-slate-400">Fast clearance and delivery for church orders.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-600/20 flex items-center justify-center text-blue-400 text-xl font-bold">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-base">Guaranteed Print Quality</h4>
+                                <p class="text-xs text-slate-400">Durable binding and crystal-clear typography.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-600/20 flex items-center justify-center text-emerald-400 text-xl font-bold">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-base">Global Reach</h4>
+                                <p class="text-xs text-slate-400">Serving over 40+ countries across continents.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 3. FOOTER SECTION -->
+    <footer id="contact" class="header-footer-bg text-white pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+                
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="bg-red-600 p-2.5 rounded-xl text-white font-bold shadow-md">
+                            <i class="fa-solid fa-book-bible text-xl"></i>
+                        </div>
+                        <span class="text-xl font-black tracking-wide">Kingdom Bible</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Your trusted distribution partner for Bibles, study resources, and Christian literature worldwide.
+                    </p>
+                </div>
+
+                <!-- Shortcut 1: Quick Links -->
+                <div>
+                    <h3 class="text-red-400 text-xs font-black uppercase tracking-widest mb-4">Quick Links</h3>
+                    <ul class="space-y-2.5 text-sm text-slate-300">
+                        <li><a href="#hero" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#catalog" class="hover:text-white transition-colors">Catalog</a></li>
+                        <li><a href="#profiles" class="hover:text-white transition-colors">Team Profiles</a></li>
+                        <li><a href="#faq" class="hover:text-white transition-colors">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <!-- Shortcut 2: Categories -->
+                <div>
+                    <h3 class="text-red-400 text-xs font-black uppercase tracking-widest mb-4">Categories</h3>
+                    <ul class="space-y-2.5 text-sm text-slate-300">
+                        <li><a href="#catalog" onclick="filterTranslation('ALL')" class="hover:text-white transition-colors">Study Bibles</a></li>
+                        <li><a href="#catalog" onclick="filterTranslation('NLT')" class="hover:text-white transition-colors">Children's Bibles</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Bulk Orders</a></li>
+                        <li><a href="#catalog" onclick="filterTranslation('ESV')" class="hover:text-white transition-colors">Foreign Languages</a></li>
+                    </ul>
+                </div>
+
+                <!-- Shortcut 3: Contact Shortcuts -->
+                <div>
+                    <h3 class="text-red-400 text-xs font-black uppercase tracking-widest mb-4">Contact & Support</h3>
+                    <ul class="space-y-3 text-sm text-slate-300 mb-6">
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-envelope text-red-500 w-4"></i>
+                            <span>info@kingdombibledistribution.com</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-phone text-red-500 w-4"></i>
+                            <span>+1 (800) 555-BIBLE</span>
+                        </li>
+                    </ul>
+                    
+                    <!-- Social Media Links -->
+                    <div class="flex space-x-3">
+                        <a href="javascript:void(0)" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 flex items-center justify-center transition-colors text-white">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 flex items-center justify-center transition-colors text-white">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-red-600 flex items-center justify-center transition-colors text-white">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Copyright Notice -->
+            <div class="pt-8 text-center text-xs text-slate-500">
+                <p>&copy; Kingdom Bible Distribution Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript Logic -->
+    <script>
+        // Scripture Catalog Items
+        let catalogItems = [
+            { 
+                title: "KJV Study Bible - Classic Hardcover", 
+                translation: "KJV", 
+                category: "Study Bibles", 
+                price: "$29.99", 
+                image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=300&q=80",
+                verse: "Psalm 119:105 - Thy word is a lamp unto my feet, and a light unto my path."
+            },
+            { 
+                title: "NIV Study Bible - Bonded Leather", 
+                translation: "NIV", 
+                category: "Study Bibles", 
+                price: "$45.00", 
+                image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=300&q=80",
+                verse: "John 3:16 - For God so loved the world that he gave his one and only Son..."
+            },
+            { 
+                title: "ESV Global Study Bible", 
+                translation: "ESV", 
+                category: "Foreign Languages", 
+                price: "$24.99", 
+                image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=300&q=80",
+                verse: "Romans 8:28 - God works all things together for good to those who love Him."
+            },
+            { 
+                title: "NKJV Parallel & Commentary Edition", 
+                translation: "NKJV", 
+                category: "Bulk Orders", 
+                price: "$34.50", 
+                image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=300&q=80",
+                verse: "Proverbs 3:5 - Trust in the LORD with all your heart..."
+            },
+            { 
+                title: "NLT Children's Illustrated Bible", 
+                translation: "NLT", 
+                category: "Children's Bibles", 
+                price: "$18.99", 
+                image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=300&q=80",
+                verse: "Matthew 19:14 - Let the little children come to me..."
+            },
+            { 
+                title: "KJV Giant Print Reference Bible", 
+                translation: "KJV", 
+                category: "Large Print", 
+                price: "$22.00", 
+                image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=300&q=80",
+                verse: "Philippians 4:13 - I can do all things through Christ which strengtheneth me."
+            }
+        ];
+
+        // Extra pool for regenerating scriptures dynamically
+        const extraScripturePool = [
+            { 
+                title: "NKJV Youth Devotional Edition", 
+                translation: "NKJV", 
+                category: "Devotionals", 
+                price: "$21.99", 
+                image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=300&q=80",
+                verse: "1 Timothy 4:12 - Let no one despise your youth..."
+            },
+            { 
+                title: "NLT Chronological Study Bible", 
+                translation: "NLT", 
+                category: "Study Bibles", 
+                price: "$39.95", 
+                image: "https://images.unsplash.com/photo-1491841573634-28140fc7ced7?auto=format&fit=crop&w=300&q=80",
+                verse: "Ecclesiastes 3:1 - To everything there is a season..."
+            },
+            { 
+                title: "KJV Pocket Leather Edition", 
+                translation: "KJV", 
+                category: "Large Print", 
+                price: "$16.50", 
+                image: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=300&q=80",
+                verse: "Isaiah 40:31 - They that wait upon the LORD shall renew their strength."
+            }
+        ];
+
+        let activeTranslation = 'ALL';
+
+        // Initialize Page Features
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCatalog();
+
+            // Search input listener
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', () => {
+                renderCatalog();
+            });
+
+            // Mobile Menu listener
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        });
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Filter Function
+        function filterTranslation(translation) {
+            activeTranslation = translation;
+            const buttons = document.querySelectorAll('#translationFilters .filter-btn');
+            buttons.forEach(btn => {
+                if (btn.textContent.trim().includes(translation) || (translation === 'ALL' && btn.textContent.trim().includes('All'))) {
+                    btn.className = "filter-btn active-filter px-4 py-2 text-xs sm:text-sm font-bold rounded-xl bg-red-600 text-white shadow-md transition-all";
+                } else {
+                    btn.className = "filter-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-xl bg-white text-slate-700 hover:bg-slate-100 shadow-sm transition-all";
+                }
+            });
+            renderCatalog();
+        }
+
+        // Render Catalog Grid
+        function renderCatalog() {
+            const grid = document.getElementById('catalogGrid');
+            const searchVal = document.getElementById('searchInput').value.toLowerCase();
+
+            const filtered = catalogItems.filter(item => {
+                const matchesTranslation = (activeTranslation === 'ALL') || (item.translation === activeTranslation);
+                const matchesSearch = item.title.toLowerCase().includes(searchVal) || 
+                                      item.category.toLowerCase().includes(searchVal) ||
+                                      item.translation.toLowerCase().includes(searchVal) ||
+                                      (item.verse && item.verse.toLowerCase().includes(searchVal));
+                return matchesTranslation && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-slate-500 bg-white/50 rounded-2xl border border-slate-200">
+                        <i class="fa-solid fa-folder-open text-4xl mb-3 block text-slate-400"></i>
+                        No scriptures found matching your search criteria.
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(item => `
+                <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl border border-slate-200 transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+                    <div class="p-6">
+                        <div class="w-full h-44 overflow-hidden rounded-xl mb-4 bg-slate-100 relative">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=300&q=80'" />
+                            <span class="absolute top-3 left-3 px-3 py-1 bg-red-600 text-white text-xs font-black rounded-lg shadow-md uppercase tracking-wider">
+                                ${item.translation}
+                            </span>
+                        </div>
+
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-lg">
+                                ${item.category}
+                            </span>
+                        </div>
+
+                        <h3 class="font-bold text-slate-900 text-lg leading-snug mb-3 group-hover:text-red-600 transition-colors">${item.title}</h3>
+                        <p class="text-xs italic text-slate-600 bg-amber-50/80 p-3 rounded-xl border-l-4 border-amber-400 mb-2">
+                            "${item.verse}"
+                        </p>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between">
+                        <span class="text-xl font-black text-slate-900">${item.price}</span>
+                        <button onclick="requestQuote('${item.title}')" class="px-4 py-2 bg-slate-900 hover:bg-red-600 text-white text-xs font-bold rounded-xl transition-all shadow-md">
+                            Request Quote
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Regenerate extra scripture items
+        function regenerateMoreScriptures() {
+            if (extraScripturePool.length > 0) {
+                const newItems = extraScripturePool.splice(0, 2);
+                catalogItems = [...catalogItems, ...newItems];
+                renderCatalog();
+                showToast("Scriptures Regenerated", "Added " + newItems.length + " new editions to the catalog!");
+            } else {
+                showToast("Catalog Full", "All available scriptures have been loaded.");
+            }
+        }
+
+        // Toggle Accordion FAQs
+        function toggleFaq(id) {
+            const ans = document.getElementById(`faq-answer-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                ans.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Smooth Scroll Helper
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Toast Notification Helper
+        function requestQuote(title) {
+            showToast("Quote Requested!", `Added "${title}" to your inquiry queue.`);
+        }
+
+        function showToast(title, message) {
+            const toast = document.createElement('div');
+            toast.className = "fixed bottom-5 right-5 bg-slate-900 text-white px-5 py-4 rounded-2xl shadow-2xl z-50 flex items-center space-x-3 border-l-4 border-red-500 animate-bounce max-w-xs sm:max-w-md border border-slate-800";
+            toast.innerHTML = `
+                <i class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
+                <div>
+                    <p class="font-bold text-xs sm:text-sm text-white">${title}</p>
+                    <p class="text-xs text-slate-300">${message}</p>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.remove();
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
